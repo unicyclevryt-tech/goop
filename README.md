@@ -1,1 +1,34 @@
-goop
+# Goop — assets edition
+
+Goop has a small `public/index.html` that loads the real app code from `public/assets/`, similar to Cherri. The original UI, bookmarks, games and Matrix theme are retained.
+
+## File structure
+
+- `public/index.html` — layout and references to the external assets
+- `public/assets/style.css` — Lexend, Goop styles and green Matrix effects
+- `public/assets/app.js` — search, bookmarks, sections, proxy and settings
+- `public/assets/matrix.js` — animated code background
+- `public/sw.js` — Scramjet service worker
+- `scripts/build.mjs` — produces `dist/` with installed proxy runtime assets
+- `.github/workflows/deploy.yml` — builds and publishes GitHub Pages
+
+## Deploy
+
+1. Upload the extracted contents **at the repository root** to `unicyclevryt-tech/goop` (do not upload just the ZIP).
+2. Repository **Settings → Pages → Source: GitHub Actions**.
+3. The included workflow installs Scramjet and BareMux and publishes `dist/`.
+4. Visit **https://unicyclevryt-tech.github.io/goop/**.
+5. Open Settings, select a Wisp server and test browser search.
+
+**Do not double-click `public/index.html`** — the proxy requires a service worker on HTTPS (or localhost) and generated runtime files.
+
+On GitHub Pages the base path is `/goop/`; this edition resolves all proxy assets relative to the page rather than accidentally targeting the domain root.
+
+### Troubleshooting
+
+- If the build fails, inspect the Actions workflow logs.
+- If Scramjet fails, check browser devtools Network for `scram/scramjet.all.js`, `baremux/worker.js`, `libcurl/index.mjs`, `sw.js` and the Wisp WebSocket.
+- A public Wisp endpoint can be offline or rate-limited; try another in Settings.
+- Some complex websites may still fail under proxy rewriting.
+
+No server-side Wisp server is deployed by GitHub Pages. This project relies on a compatible external Wisp relay.

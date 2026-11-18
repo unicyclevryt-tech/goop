@@ -1,5 +1,5 @@
 // Based on the service worker pattern from Mercury Workshop Scramjet-App v1.1.0
-importScripts('/scram/scramjet.all.js');
+importScripts('./scram/scramjet.all.js');
 const {ScramjetServiceWorker}=$scramjetLoadWorker();
 const scramjet=new ScramjetServiceWorker();
 self.addEventListener('fetch',event=>{
