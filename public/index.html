@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#07130f" name="theme-color"/>
+  <title>
+   Goop
+  </title>
+  <link href="./assets/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div aria-hidden="true" id="goopBinaryRain">
+  </div>
+  <div class="shell">
+   <header class="top">
+    <div class="brand" id="brandHome" role="button" tabindex="0">
+     <span class="logo-dot">
+     </span>
+     Goop
+    </div>
+    <div class="topright">
+     <button class="btn" id="homeBtn">
+      Home
+     </button>
+     <button class="btn" id="settingsBtn">
+      Settings
+     </button>
+    </div>
+   </header>
+   <main class="home" id="home">
+    <div class="glowmark">
+     G
+    </div>
+    <h1 class="matrix-title" data-text="Goop">
+     Goop
+    </h1>
+    <form action="javascript:void(0)" class="searchrow" id="homeSearchForm">
+     <input aria-label="Search the web" autocomplete="off" id="homeSearch" placeholder="Search anything or paste a link"/>
+     <button class="btn primary" type="submit">
+      Search
+     </button>
+    </form>
+    <div class="sectionheading">
+     <h2>
+      Bookmarks
+     </h2>
+     <button class="btn smallbtn" id="addBookmark">
+      Add bookmark
+     </button>
+    </div>
+    <div class="bookmarks" id="bookmarks">
+    </div>
+    <div class="sectionheading">
+     <h2>
+      Your stuff
+     </h2>
+    </div>
+    <div class="grid" id="categories">
+    </div>
+   </main>
+   <section class="panelview hidden" id="categoryView">
+    <div class="viewhead">
+     <div>
+      <button class="btn smallbtn" data-home="">
+       Back
+      </button>
+      <h2 id="categoryTitle">
+       Games
+      </h2>
+      <span class="muted" id="categoryDesc">
+      </span>
+     </div>
+     <div class="toolbar2" id="categoryTools">
+     </div>
+    </div>
+    <div class="notice hidden" id="categoryNotice">
+    </div>
+    <div class="results" id="categoryResults">
+    </div>
+   </section>
+   <section class="panelview settings hidden" id="settingsView">
+    <div class="viewhead">
+     <div>
+      <button class="btn smallbtn" data-home="">
+       Back
+      </button>
+      <h2>
+       Settings
+      </h2>
+     </div>
+    </div>
+    <div class="settinggroup">
+     <h3>
+      Appearance
+     </h3>
+     <label class="checkrow" for="matrixMotion">
+      <input checked="" id="matrixMotion" type="checkbox"/>
+      Animated Matrix background
+     </label>
+     <p class="muted">
+      Turn this off for a still background.
+     </p>
+    </div>
+    <div class="settinggroup">
+     <h3>
+      Browsing &amp; Search
+     </h3>
+     <label for="engine">
+      Search engine
+     </label>
+     <select id="engine">
+      <option value="https://www.google.com/search?q=">
+       Google
+      </option>
+      <option value="https://www.bing.com/search?q=">
+       Bing
+      </option>
+      <option value="https://duckduckgo.com/?q=">
+       DuckDuckGo
+      </option>
+      <option value="https://search.brave.com/search?q=">
+       Brave
+      </option>
+     </select>
+     <label for="searchApi">
+      Search API URL (optional)
+     </label>
+     <input id="searchApi" placeholder="https://your-cors-enabled-searxng.example/search" type="url">
+      <p class="muted">
+       For live website results inside this file, configure a CORS-enabled JSON search endpoint. Most public services block cross-origin browser requests; this needs a permitted endpoint.
+      </p>
+      <label for="wisp">
+       Wisp server
+      </label>
+      <select id="wisp">
+       <option value="wss://wisp.mercurywork.shop/">
+        Mercury Workshop &mdash; demo (limited)
+       </option>
+       <option value="wss://proxy.crllect.dev/wisp/">
+        ProxDocs &mdash; documentation example
+       </option>
+       <option value="wss://webmc.xyz/api/wisp">
+        WebMC &mdash; community listed (unverified)
+       </option>
+       <option value="wss://wisp.webmc.xyz/">
+        WebMC alternate &mdash; community listed (unverified)
+       </option>
+       <option value="wss://holyunblocker.org/wisp/">
+        Holy Unblocker &mdash; community listed (unverified)
+       </option>
+       <option value="wss://fern.best/wisp/">
+        Fern &mdash; community listed (unverified)
+       </option>
+       <option value="wss://eu-central.wisp.q13x.com/">
+        Q13X EU &mdash; community listed (unverified)
+       </option>
+       <option value="custom">
+        Custom Wisp server
+       </option>
+      </select>
+      <label for="customWisp">
+       Custom Wisp WebSocket URL (wss://...)
+      </label>
+      <input id="customWisp" placeholder="wss://your-server.example/wisp/" type="url"/>
+      <div class="launch-actions">
+       <button class="btn primary" id="applyWisp">
+        Apply proxy server
+       </button>
+       <button class="btn" id="testWisp">
+        Test socket
+       </button>
+      </div>
+      <div class="muted" id="wispStatus">
+       Wisp servers are only useful when Scramjet runs from HTTPS or localhost with its service worker. Community endpoints are unverified and may be offline. A Wisp server alone cannot make a local file:// page act as a full browser.
+      </div>
+      <label class="checkrow">
+       <input checked="" id="preferProxy" type="checkbox"/>
+       Use Scramjet proxy for browser navigation when available
+      </label>
+     </input>
+    </div>
+    <div class="settinggroup">
+     <h3>
+      Game sources
+     </h3>
+     <label for="gameHost">
+      Game files hosting base URL
+     </label>
+     <input id="gameHost" placeholder="https://your-game-host.example/" type="url"/>
+     <p class="muted">
+      GitHub hosts catalog JSON and source code, not a guaranteed playable hosting service. Deploy the game files with their original folder paths and enter that site's base URL here.
+     </p>
+     <label for="gnmathUrl">
+      gnmath-sdk catalog URL (optional)
+     </label>
+     <input id="gnmathUrl" placeholder="https://your-host.example/gnmath.json" type="url"/>
+     <p class="muted">
+      gnmath-sdk was not included in the uploaded HTML; add its JSON catalog URL when available.
+     </p>
+    </div>
+    <div class="settinggroup">
+     <h3>
+      Media &amp; Roblox backends
+     </h3>
+     <p class="muted">
+      These projects must be hosted as running services. Enter your deployed HTTPS server URLs below.
+     </p>
+     <label for="moviesBase">
+      Movies API URL
+     </label>
+     <input id="moviesBase" placeholder="https://movies.your-domain.example/"/>
+     <label for="musicBase">
+      Music API URL
+     </label>
+     <input id="musicBase" placeholder="https://music.your-domain.example/"/>
+     <label for="mangaBase">
+      Manga API URL
+     </label>
+     <input id="mangaBase" placeholder="https://manga.your-domain.example/"/>
+     <label for="bloxBase">
+      GoopBlox server URL
+     </label>
+     <input id="bloxBase" placeholder="https://blox.your-domain.example/"/>
+     <label for="mangaSource">
+      Manga source
+     </label>
+     <select id="mangaSource">
+      <option value="mangadex">
+       MangaDex
+      </option>
+      <option value="pill">
+       MangaPill
+      </option>
+     </select>
+    </div>
+    <div class="settinggroup">
+     <h3>
+      Your data
+     </h3>
+     <button class="btn" id="exportSettings">
+      Export settings &amp; bookmarks
+     </button>
+     <button class="btn" id="clearData">
+      Reset Goop settings
+     </button>
+     <p class="muted">
+      Settings and bookmarks are stored in this browser using localStorage.
+     </p>
+    </div>
+   </section>
+   <section class="browser hidden" id="browserView">
+    <div class="browserbar">
+     <button class="btn" id="backBtn" title="Back">
+      &larr;
+     </button>
+     <button class="btn" id="forwardBtn" title="Forward">
+      &rarr;
+     </button>
+     <button class="btn" id="reloadBtn" title="Reload">
+      &orarr;
+     </button>
+     <button class="btn" id="browserHome" title="Goop home">
+      Home
+     </button>
+     <input aria-label="Browser URL" id="urlInput" placeholder="Search or enter a URL" type="text"/>
+     <button class="btn primary" id="goBtn" type="button">
+      Go
+     </button>
+     <button class="btn" id="saveBookmark" title="Bookmark current page">
+      Save
+     </button>
+     <button class="btn" id="openExternal" title="Open in new tab">
+      Open
+     </button>
+    </div>
+    <div class="hidden" id="searchGuide" role="status">
+    </div>
+    <iframe id="browserFrame" referrerpolicy="no-referrer" title="Goop browser">
+    </iframe>
+    <div aria-label="In-page search results" class="search-fallback hidden" id="searchFallback" role="region">
+    </div>
+    <div class="browsermsg" id="status">
+     Browser initializing&hellip;
+    </div>
+   </section>
+   <div class="toast hidden" id="toast" role="status">
+   </div>
+  </div>
+  <script src="./scram/scramjet.all.js">
+  </script>
+  <script src="./baremux/index.js">
+  </script>
+  <script defer="" src="./assets/app.js">
+  </script>
+  <script defer="" src="./assets/matrix.js">
+  </script>
+ </body>
+</html>
