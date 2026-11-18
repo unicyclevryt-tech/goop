@@ -10,7 +10,34 @@
   <title>
    Goop
   </title>
-  <link href="./assets/style.css" rel="stylesheet"/>
+  <style>
+/* Fallback only: prevents the page from collapsing if style.css fails to load. */
+:root{color-scheme:dark;font-family:Lexend,system-ui,sans-serif;color:#edf8ef;background:#061109}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#061109;color:#edf8ef;font-family:Lexend,system-ui,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+.hidden{display:none!important}
+.shell{position:relative;z-index:1;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px max(20px,4vw);background:#07170dc9;border-bottom:1px solid #254331}
+.topright{display:flex;gap:10px}.brand{font-weight:700;font-size:22px;cursor:pointer}
+.btn{padding:10px 15px;border-radius:9px;border:1px solid #35583d;background:#12251a;color:#e8f4e9}
+.btn.primary{background:#a0e5a8;color:#06150b;font-weight:600}
+.home{width:min(950px,calc(100% - 36px));margin:0 auto;padding:clamp(58px,10vh,110px) 0 60px;text-align:center}
+.home h1{font-size:clamp(72px,10vw,125px);line-height:1.1;letter-spacing:-.06em;color:#8efe9f;text-shadow:0 0 25px #39ed605c;margin:0 0 34px}
+.searchrow{display:flex;gap:8px;padding:8px;background:#101f16;border:1px solid #426c4d;border-radius:13px;max-width:660px;margin:0 auto}
+.searchrow input{flex:1;min-width:0;padding:11px;background:transparent;border:0;color:#eaf8e9;outline:none}
+.sectionheading{display:flex;justify-content:space-between;align-items:center;gap:15px;text-align:left;margin:42px 0 16px}.sectionheading h2{font-size:16px}
+.bookmarks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.bookmark,.tile{color:#e9f6e8;border-radius:10px;border:1px solid #31513b;background:#11241a;padding:13px;min-height:56px}
+.bookmark{display:flex;align-items:center;justify-content:space-between;gap:8px}.bookmark>button:first-child{border:0;background:none;color:inherit;text-align:left;overflow:hidden;text-overflow:ellipsis}.bookmark .remove{border:0;background:none;color:#a5dcad}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{display:flex;justify-content:space-between;align-items:center;text-align:left}
+.panelview{width:min(1100px,calc(100% - 36px));margin:30px auto}.settinggroup{background:#102118;border:1px solid #2d5036;padding:20px;border-radius:12px;margin:15px 0}
+.field,.settinggroup input,.settinggroup select{background:#102118;border:1px solid #2d5036;color:#f2fbf1;border-radius:7px;padding:10px;max-width:100%}
+.browser{display:flex;flex-direction:column;height:calc(100vh - 65px)}.browserbar{display:flex;flex-wrap:wrap;gap:7px;padding:10px;background:#0b1a10}.browserbar input{flex:1;min-width:160px}.browser iframe{flex:1;width:100%;border:0;background:white}
+#goopBinaryRain{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+@media(max-width:680px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.top{padding:12px 16px}.home{padding-top:65px}}
+</style>
+  <link href="./assets/style.css" rel="stylesheet" onerror="console.error('Goop style.css missing. Upload the whole public/assets folder.')"/>
  </head>
  <body>
   <div aria-hidden="true" id="goopBinaryRain">
